@@ -1,0 +1,186 @@
+/* ================= GLOBAL RESET ================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ================= ROOT ================= */
+.virtual-lab {
+  background: #000;
+  color: #fff;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ================= TECHNICAL GRID BACKGROUND ================= */
+.v-technical-grid {
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ================= TYPOGRAPHY HELPERS ================= */
+.mono {
+  font-family: "SF Mono", "JetBrains Mono", monospace;
+}
+
+.serif-italic {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+}
+
+/* ================= HEADER ================= */
+.virtual-lab h1 {
+  text-shadow: 0 0 18px rgba(255,255,255,0.06);
+}
+
+/* ================= DIVIDER ================= */
+.v-divider-label {
+  margin: 60px 0 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.v-divider-label span {
+  padding: 6px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+}
+
+/* ================= ENCODING GRID ================= */
+.v-encoding-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.v-state-bubble {
+  height: 110px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.v-state-bubble:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* ================= PHASE GRID ================= */
+.v-phase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+/* ================= PHASE CARD ================= */
+.v-phase-card {
+  background: rgba(255,255,255,0.035);
+  border-radius: 18px;
+  padding: 24px;
+  border: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.v-phase-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.08),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.v-phase-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.v-phase-card:hover::before {
+  opacity: 1;
+}
+
+/* ================= ICON ================= */
+.v-phase-card svg {
+  width: 44px;
+  height: 44px;
+  opacity: 0.85;
+}
+
+/* ================= TEXT ================= */
+.v-phase-card h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.v-phase-card p {
+  line-height: 1.6;
+}
+
+/* ================= PHYSICS CORE ================= */
+.v-physics-core {
+  margin-top: auto;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.05);
+  border-left: 4px solid #ffffff;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  color: #e5e7eb;
+}
+
+.v-physics-core strong {
+  color: #ffffff;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .v-encoding-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .v-phase-grid {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .v-state-bubble {
+    height: 90px;
+    font-size: 1.2rem;
+  }
+
+  .v-phase-card {
+    padding: 18px;
+  }
+}
+
+/* ================= ACCESSIBILITY ================= */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
